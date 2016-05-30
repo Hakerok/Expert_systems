@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Expert_systems
 {
-    class ClassExpertSystems
+    public class ClassExpertSystems
     {
 
     }
