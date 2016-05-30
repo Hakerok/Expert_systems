@@ -17,10 +17,8 @@ namespace Expert_systems
         public Form1()
         {
            InitializeComponent();
-           class_dg.dgKonstanty = dgKonstanty;
-           class_dg.dgVariables = dgVariables;
-           class_dg.First_DataGrid();
-           class_dg.Second_DataGrid();
+           class_dg.First_DataGrid(dgKonstanty);
+           class_dg.Second_DataGrid(dgVariables);
         }
         
         private void Hypothesis_1_Click(object sender, EventArgs e)
@@ -30,7 +28,7 @@ namespace Expert_systems
             dgVariables.Rows.Clear();
             dgVariables.Refresh();
             string path = Environment.CurrentDirectory + @"\Gipoteza1.dataES";
-            class_dg.Read_Hypothesis(path);
+            
         }
 
         private void Hypothesis_2_Click(object sender, EventArgs e)
@@ -40,7 +38,7 @@ namespace Expert_systems
             dgVariables.Rows.Clear();
             dgVariables.Refresh();
             string path = Environment.CurrentDirectory + @"\Gipoteza2.dataES";
-            class_dg.Read_Hypothesis(path);
+            
         }
 
         private void Calculate_Click(object sender, EventArgs e)

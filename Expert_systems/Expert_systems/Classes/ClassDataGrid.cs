@@ -7,10 +7,8 @@ namespace Expert_systems
 {
     public class ClassDataGrid 
     {
-      public DataGridView dgKonstanty = new DataGridView();
-      public DataGridView dgVariables = new DataGridView();
-      
-        public void First_DataGrid()
+           
+        public void First_DataGrid(DataGridView dgKonstanty)
         {
             dgKonstanty.AutoGenerateColumns = true;
             DataGridViewCell Cell_1 = new DataGridViewTextBoxCell();
@@ -41,7 +39,7 @@ namespace Expert_systems
 
         }
 
-        public void Second_DataGrid()
+        public void Second_DataGrid(DataGridView dgVariables)
         {
             DataGridViewCell Cell_1 = new DataGridViewTextBoxCell();
             DataGridViewCell Cell_2 = new DataGridViewTextBoxCell();
