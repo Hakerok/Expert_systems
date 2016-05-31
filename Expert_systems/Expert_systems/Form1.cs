@@ -7,52 +7,72 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using  System.IO;
 
 namespace Expert_systems
 {
     public partial class Form1 : Form
     {
-        ClassDataGrid class_dg = new ClassDataGrid();
-        ClassExpertSystems class_es = new ClassExpertSystems();
+        
+        readonly ClassDataGrid classDg = new ClassDataGrid();
+        ClassExpertSystems classEs;
         public Form1()
         {
            InitializeComponent();
-           class_dg.First_DataGrid(dgKonstanty);
-           class_dg.Second_DataGrid(dgVariables);
+          
         }
         
-        private void Hypothesis_1_Click(object sender, EventArgs e)
+        private void Hypothesis1Click(object sender, EventArgs e)
         {
-            dgKonstanty.Rows.Clear();
-            dgKonstanty.Refresh();
-            dgVariables.Rows.Clear();
-            dgVariables.Refresh();
-            string path = Environment.CurrentDirectory + @"\Gipoteza1.dataES";
+          
+            try
+            {
+              string path = Environment.CurrentDirectory + @"\Hypothesis_1.dataES";
+              classDg.HypothesisRead(path);
+
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+           
             
         }
 
-        private void Hypothesis_2_Click(object sender, EventArgs e)
+        private void Hypothesis2Click(object sender, EventArgs e)
         {
-            dgKonstanty.Rows.Clear();
-            dgKonstanty.Refresh();
-            dgVariables.Rows.Clear();
-            dgVariables.Refresh();
-            string path = Environment.CurrentDirectory + @"\Gipoteza2.dataES";
+            try
+            {
+               string path = Environment.CurrentDirectory + @"\Hypothesis_2.dataES";
+               classDg.HypothesisRead(path);
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
             
         }
 
-        private void Calculate_Click(object sender, EventArgs e)
+        private void CalculateClick(object sender, EventArgs e)
         {
-
+           
         }
 
-        private void Exit_Click(object sender, EventArgs e)
+        private void ExitClick(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(@"Вы действительно хотите выйти?", @"Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
 
+        }
+
+        private void Form1Load(object sender, EventArgs e)
+        {
+            classDg.DgKonstanty = dgKonstanty;
+            classDg.DgVariables = dgVariables;
+            classDg.FirstDataGrid();
+            classDg.SecondDataGrid();
         }
     }
 }
